@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+            justify-content: center;
+
+        }
+        body{
+            background-color: aqua;
+
+        }
+        .container{
+            background-color: aliceblue;
+            height: 500px;
+            width: 500px;
+            
+        }
+        .ansh{
+            display: flex;
+            gap: 20px;
+            flex-direction: column;
+            width: 200px;
+            margin-left: 28%;
+            margin-top: 40px;
+
+        }
+        button{
+            margin-top: 30px;
+            width: 100px;
+            background-color: red;
+            color: bisque;
+            
+        }
+        .main{
+            padding-top: 25px;
+            font-size: xx-large;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main">Temperature Converter</h1>
+        <div class="ansh">
+            <label><h2>temp.(celsius)</h2></label>
+        <input type="text" id="celsius" placeholder="Enter Celsius temperature" step="0.01">
+
+        <br>
+        <label for="conversionType">type</label>
+        <select id="conversionType">
+            <option value="fahrenheit">Convert to Fahrenheit</option>
+            <option value="kelvin">Convert to Kelvin</option>
+        </select>
+
+        <br>
+        </div>
+        <button class="btn" onclick="convertTemperature()">Convert</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function convertTemperature() {
+            const celsiusInput = document.getElementById('celsius').value;
+            const conversionType = document.getElementById('conversionType').value;
+            const resultElement = document.getElementById('result');
+
+            if (celsiusInput === '') {
+                resultElement.innerText = 'Please enter a temperature.';
+                return;
+            }
+
+            const celsius = parseFloat(celsiusInput);
+
+            if (conversionType === 'fahrenheit') {
+                const fahrenheit = (celsius * 9/5) + 32;
+                resultElement.innerText = `Temperature in Fahrenheit: ${fahrenheit.toFixed(2)}°F`;
+            } else if (conversionType === 'kelvin') {
+                const kelvin = celsius + 273.15;
+                resultElement.innerText = `Temperature in Kelvin: ${kelvin.toFixed(2)} K`;
+            }
+        }
+    </script>
+</body>
+</html>
